@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Mang App</string>
+    <string name="tab_text_1">Sensor</string>
+    <string name="tab_text_2">Analisis</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_sensor">Sensor</string>
+    <string name="title_analisis">Analisis</string>
+</resources>
