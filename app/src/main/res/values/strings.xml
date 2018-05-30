@@ -7,4 +7,7 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_sensor">Sensor</string>
     <string name="title_analisis">Analisis</string>
+    <string name="divider">|</string>
+    <string name="jumlah_bahaya">Jumlah Bahaya</string>
+    <string name="rata_rata_bahaya">Rata-Rata Bahaya</string>
 </resources>

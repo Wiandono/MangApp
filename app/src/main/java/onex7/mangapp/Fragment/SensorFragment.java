@@ -1,7 +1,6 @@
 package onex7.mangapp.Fragment;
 
 import android.annotation.SuppressLint;
-import android.hardware.Sensor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -34,13 +33,11 @@ public class SensorFragment extends Fragment {
     ArrayList<HashMap<String, String>> sensorData;
 
     public SensorFragment() {
-
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sensor, container, false);
 
         sensorData = new ArrayList<>();
@@ -61,8 +58,9 @@ public class SensorFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... arg0) {
+
             HttpHandler sh = new HttpHandler();
-            // Making a request to url and getting response
+
             String url = "https://api.myjson.com/bins/lxal2";
             String jsonStr = sh.makeServiceCall(url);
 
@@ -71,23 +69,18 @@ public class SensorFragment extends Fragment {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
-                    // Getting JSON Array node
                     JSONArray sensors = jsonObj.getJSONArray("sensor");
 
-                    // looping through All Contacts
                     for (int i = 0; i < sensors.length(); i++) {
                         JSONObject c = sensors.getJSONObject(i);
                         String status = "Status: " + c.getString("status");
                         String waktu = c.getString("waktu");
 
-                        // tmp hash map for single contact
                         HashMap<String, String> sensor = new HashMap<>();
 
-                        // adding each child node to HashMap key => value
                         sensor.put("status", status);
                         sensor.put("waktu", waktu);
 
-                        // adding contact to contact list
                         sensorData.add(sensor);
                     }
                 } catch (final JSONException e) {
@@ -115,9 +108,7 @@ public class SensorFragment extends Fragment {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-            ListAdapter adapter = new SimpleAdapter(getActivity(), sensorData,
-                    R.layout.layout_sensor, new String[]{"status", "waktu"},
-                    new int[]{R.id.status, R.id.waktu});
+            ListAdapter adapter = new SimpleAdapter(getActivity(), sensorData, R.layout.layout_sensor, new String[]{"status", "waktu"}, new int[]{R.id.status, R.id.waktu});
             listSensor.setAdapter(adapter);
         }
     }

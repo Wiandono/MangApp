@@ -20,7 +20,9 @@ public class HttpHandler {
     }
 
     public String makeServiceCall(String reqUrl) {
+
         String response = null;
+
         try {
             URL url = new URL(reqUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -41,10 +43,12 @@ public class HttpHandler {
     }
 
     private String convertStreamToString(InputStream is) {
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
 
         String line;
+
         try {
             while ((line = reader.readLine()) != null) {
                 sb.append(line).append('\n');
